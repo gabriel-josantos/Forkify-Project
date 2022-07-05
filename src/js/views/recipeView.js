@@ -95,6 +95,7 @@ class RecipeView extends View {
         <h2 class="heading--2">Recipe ingredients</h2>
         <ul class="recipe__ingredient-list">
     ${this._data.ingredients.map(this._generateMarkupIngredient).join('')}
+    <li>Total Calories = ${this._data.totalCalories}</li>
         
     </div>
 
@@ -130,7 +131,7 @@ class RecipeView extends View {
           }</div>
           <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
-          ${ing.description}
+          ${ing.description} ${ing.calories} kcal
           </div>
       </li>
       `;

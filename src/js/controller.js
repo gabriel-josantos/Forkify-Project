@@ -36,8 +36,10 @@ async function controlRecipes() {
     bookmarksView.update(model.state.bookmarks);
     // 1) Loading Recipe
     await model.loadRecipe(id);
-
     // 2) Rendering Recipe
+
+    await model.loadCalories();
+
     recipeView.render(model.state.recipe);
   } catch (err) {
     recipeView.renderError();
@@ -137,6 +139,6 @@ function init() {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addhandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  console.log('TEST3');
+  console.log('TEST');
 }
 init();
