@@ -31,34 +31,35 @@ function createRecipeObject(data) {
 
 export async function loadCalories(data) {
   try {
-    // const des = state.recipe.ingredients.map(ing => {
-    //   const cutIng = ing.description.split(' ');
-    //   cutIng.splice(-1);
-    //   return cutIng.join(' ');
-    // });
-    // console.log(des);
+    const des = state.recipe.ingredients.map(ing => {
+      const cutIng = ing.description.split(' ');
+      cutIng.splice(-1);
+      return cutIng.join(' ');
+    });
+    console.log(des);
 
-    // const calArr = await state.recipe.ingredients.map(async function(ing) {
-    //   //const query = 'sour cream';
-    //   const res1 = await fetch(
-    //     `https://api.spoonacular.com/food/ingredients/search?query=${ing.description}&apiKey=${SPOON_KEY}`
-    //   );
-    //   const data1 = await res1.json();
+    const calArr = await state.recipe.ingredients.map(async function (ing) {
+      //const query = 'sour cream';
+      const res1 = await fetch(
+        `https://api.spoonacular.com/food/ingredients/search?query=${ing.description}&apiKey=${SPOON_KEY}`
+      );
+      const data1 = await res1.json();
 
-    //   const ingID = data1.results[0]?.id ? data1.results[0]?.id : 1026;
-    //   const res2 = await fetch(
-    //     `https://api.spoonacular.com/food/ingredients/${ingID}/information?amount=${ing.quantity}&unit=${ing.unit}&apiKey=${SPOON_KEY}`
-    //   );
-    //   const data2 = await res2.json();
-    //   const calories = data2.nutrition.nutrients.filter(
-    //     nut => nut.name === 'Calories'
-    //   );
-    //   return calories[0].amount;
-    // });
-    const calArr = [45, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      const ingID = data1.results[0]?.id ? data1.results[0]?.id : 1026;
+      const res2 = await fetch(
+        `https://api.spoonacular.com/food/ingredients/${ingID}/information?amount=${ing.quantity}&unit=${ing.unit}&apiKey=${SPOON_KEY}`
+      );
+      const data2 = await res2.json();
+      const calories = data2.nutrition.nutrients.filter(
+        nut => nut.name === 'Calories'
+      );
+      return calories[0].amount;
+    });
+    //const calArr = [45, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
     state.recipe.ingredients.map((ing, i) => (ing.calories = calArr[i]));
     const totalCal = calArr.reduce((acc, cur) => acc + cur);
     state.recipe.totalCalories = totalCal;
+    console.log(calArr.resolve());
 
     console.log(state.recipe.ingredients);
   } catch (err) {
