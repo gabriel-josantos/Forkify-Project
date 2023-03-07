@@ -19,11 +19,14 @@ mostrar o numero de paginas entre os botoes de pagina
 validação de ingredientes durante formulario, com campos de diferentes para cada um dos 3 parametros, e permitir mais de 6 ingrdientes
 
 get nutrition data on each ingredient API (https://spoonacular.com/food-api) and calculate total calories of a recipe
+
 */
 
 // if (module.hot) {
 //   module.hot.accept();
 // }
+
+document.querySelector('.upload__button');
 
 async function controlRecipes() {
   try {
@@ -125,7 +128,6 @@ async function controlAddRecipe(newRecipe) {
     addRecipeView.renderError(err.message);
   }
 }
-
 
 function init() {
   bookmarksView.addHandlerRender(controlBookmarks);

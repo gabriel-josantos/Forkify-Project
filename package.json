@@ -9,14 +9,11 @@
   },
   "author": "Gabriel Santos",
   "license": "ISC",
+  "dependencies": {
+    "fracty": "^1.0.11"
+  },
   "devDependencies": {
     "@parcel/transformer-image": "^2.0.0-rc.0",
     "@parcel/transformer-sass": "^2.0.0-rc.0"
-  },
-  "dependencies": {
-    "core-js": "^3.22.5",
-    "fracty": "^1.0.11",
-    "parcel": "^2.5.0",
-    "regenerator-runtime": "^0.13.9"
   }
 }
